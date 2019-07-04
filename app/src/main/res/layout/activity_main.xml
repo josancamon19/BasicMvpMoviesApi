@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="presenter"
+            type="com.josancamon19.mvpmoviesapi.movies_list.MoviesPresenter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".movies_list.MainActivity">
+
+
+        <Button
+            android:id="@+id/btn_popular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/load_popular_movies"
+            android:onClick="@{() -> presenter.setMovies(`popular`)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_top_rated"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/load_top_rated_movies"
+            android:onClick="@{() -> presenter.setMovies(`top_rated`)}"
+            app:layout_constraintEnd_toEndOf="@+id/btn_popular"
+            app:layout_constraintStart_toStartOf="@+id/btn_popular"
+            app:layout_constraintTop_toBottomOf="@+id/btn_popular" />
+
+        <Button
+            android:id="@+id/btn_upcoming"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/load_upcoming_movies"
+            android:onClick="@{() -> presenter.setMovies(`upcoming`)}"
+            app:layout_constraintEnd_toEndOf="@+id/btn_top_rated"
+            app:layout_constraintStart_toStartOf="@+id/btn_top_rated"
+            app:layout_constraintTop_toBottomOf="@+id/btn_top_rated" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
